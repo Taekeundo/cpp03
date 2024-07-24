@@ -12,35 +12,51 @@
 
 #include "ClapTrap.hpp"
 
-int main( void ) 
+/*	[F]
+	[ Rule ]
+    Hit points		: Health point (HP)
+					  -> No hp == died.
+    Energy point	: Whenever do 'attack' or 'be repaired'
+					  -> must -1 from energy points.
+					  If no energy point == Can't 'attack' or 'be repaired'.
+    Attack damage   : Amout of attackdamage
+					  Deduct amount from hit points.
+*/
+int main(void)
 {
-	std::string s1 = "jason";
-	std::string s2 = "irene";
+	std::string str1 = "jason";
+	std::string str2 = "irene";
 
-    ClapTrap c1(s1);
-	ClapTrap c2(s2);
+    ClapTrap claptrap1(str1);
+	std::cout << std::endl;
+	ClapTrap claptrap2(str2);
 
 	std::cout << std::endl;
-	c1.beRepaired(10);
+	claptrap1.beRepaired(10);
 
 	std::cout << std::endl;
-	c1.attack(s2);
-	c2.takeDamage(5);
+	claptrap1.attack(str2);
 
 	std::cout << std::endl;
-	c2.beRepaired(3);
-	c2.beRepaired(2);
+	claptrap2.takeDamage(5);
 
 	std::cout << std::endl;
-	c2.attack(s1);
-	c1.takeDamage(10);
+	claptrap2.beRepaired(5);
 
 	std::cout << std::endl;
-	c1.beRepaired(10);
-	c1.attack(s2);
+	claptrap2.attack(str1);
 
 	std::cout << std::endl;
-	c2.attack(s1);
-	c1.takeDamage(5);
+	claptrap1.takeDamage(10);
+
+	std::cout << std::endl;
+	claptrap1.beRepaired(5);
+
+	std::cout << std::endl;
+	claptrap1.attack(str2);
+
+	std::cout << std::endl;
+	claptrap2.takeDamage(5);
+	std::cout << std::endl;
 	return (0);
 }
