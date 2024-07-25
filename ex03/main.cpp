@@ -24,29 +24,32 @@ int main( void )
 								// name		hp	ep	attack_damage
 	DiamondTrap	d_trap(str0);	// taka		100	50	30
 	std::cout << std::endl;
+
 	FragTrap	f_trap(str1);	// jason	100	100	30
 	std::cout << std::endl;
+
 	ScavTrap	s_trap(str2);	// hongpei	100	50	20
 	std::cout << std::endl;
+
 	ClapTrap	c_trap(str3);	// arthur	10	10	0
 	std::cout << std::endl;
 
 	d_trap.whoAmi();			// print message (taka class)
 
-	std::cout << "\n------------------ "\
-		"Define variable finished ------------------\n" \
+	std::cout << "\n-------------------------- "\
+		"Define variable finished --------------------------\n" \
 		<< std::endl;
 
 	d_trap.attack(str1);		// taka attack jason (-30)
 	std::cout << std::endl;		// taka		100	49	30
 
-	f_trap.takeDamage(30);		// jason	70	100	30
+	f_trap.takeDamage(d_trap.getAttackDamage());	// jason	70	100	30
 	std::cout << std::endl;
 
 	f_trap.attack(str2);		// jason attack hongpei (-30)
 	std::cout << std::endl;		// jason	70	99	30
 	
-	s_trap.takeDamage(20);		// hongpei	80	50	20
+	s_trap.takeDamage(f_trap.getAttackDamage());	// hongpei	70	50	20
 	std::cout << std::endl;
 
 	c_trap.beRepaired(50);		// arthur	60	9	0
@@ -55,29 +58,29 @@ int main( void )
 	f_trap.attack(str3);		// jason attack arthur (-30)
 	std::cout << std::endl;		// jason	70	98	30
 
-	c_trap.takeDamage(30);		// arthur	30	9	0
+	c_trap.takeDamage(f_trap.getAttackDamage());	// arthur	30	9	0
 	std::cout << std::endl;
 
 	s_trap.attack(str3);		// hongpei attack arthur (-20)
-	std::cout << std::endl;		// hongpei	80	49	20
+	std::cout << std::endl;		// hongpei	70	49	20
 
-	c_trap.takeDamage(20);		// arthur	10	9	0
+	c_trap.takeDamage(s_trap.getAttackDamage());	// arthur	10	9	0
 	std::cout << std::endl;
 
 	s_trap.attack(str0);		// hongpei attack taka (-20)
-	std::cout << std::endl;		// hongpei	80	48	20
+	std::cout << std::endl;		// hongpei	70	48	20
 
-	d_trap.takeDamage(20);		// taka		80	49	30
+	d_trap.takeDamage(s_trap.getAttackDamage());		// taka		80	49	30
 	std::cout << std::endl;
 
 	d_trap.beRepaired(30);		// taka repaired (+30);
-	std::cout << std::endl;		// taka		110	49	30
+	std::cout << std::endl;		// taka		110	48	30
 
 	f_trap.beRepaired(40);		// jason repaired (+40)
 	std::cout << std::endl;		// jason	110	97	30
 
-	s_trap.beRepaired(30);		// hongpei repaired (+30)
-	std::cout << std::endl;		// hongpei	110	48	30
+	s_trap.beRepaired(40);		// hongpei repaired (+40)
+	std::cout << std::endl;		// hongpei	110	47	20
 
 	c_trap.beRepaired(100);		// arthur repaired (+100)
 	std::cout << std::endl;		// arthur	110	8	0

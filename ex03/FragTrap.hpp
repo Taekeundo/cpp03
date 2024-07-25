@@ -30,6 +30,11 @@ class FragTrap : virtual public ClapTrap
 
         void attack(const std::string& target);     // Over-riding.
         void highFivesGuys(void) const;             // Child class function
+
+        unsigned int getAttackDamage() const
+        {
+            return m_attack_damage;
+        }
 };
 
 #endif

@@ -18,7 +18,7 @@
 /*  [F]
     Class 'ScavTrap' inherited from 'ClapTrap'.
 */
-class FragTrap : virtual public ClapTrap
+class FragTrap : public ClapTrap
 {
     public:
         FragTrap();                                 // Default constructor

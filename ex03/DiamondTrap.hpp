@@ -70,6 +70,11 @@ class DiamondTrap : virtual public ScavTrap, virtual public FragTrap
 
         void attack(const std::string& target);         // Over-riding.
         void    whoAmi() const;
+
+        unsigned int getAttackDamage() const
+        {
+            return m_attack_damage;
+        }
 };
 
 #endif
